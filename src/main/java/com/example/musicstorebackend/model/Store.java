@@ -16,7 +16,6 @@ public class Store {
 
     //Én butik kan have mange albums. Album har en @ManyToOne til Store (bidirectional relation).
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Album> albums = new ArrayList<>();
 
     // --- Constructors ---

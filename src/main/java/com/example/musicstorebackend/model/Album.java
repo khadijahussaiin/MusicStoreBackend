@@ -1,5 +1,6 @@
 package com.example.musicstorebackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Album {
 
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @JsonIgnoreProperties("albums")  // Undgå cirkulær reference
     private Store store;
 
     @ManyToMany(mappedBy = "reservations")

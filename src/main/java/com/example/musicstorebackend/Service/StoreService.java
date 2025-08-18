@@ -49,7 +49,7 @@ public class StoreService {
 
         return customer.getReservations()
                 .stream()
-                .filter(Album::isAvailability) // kun albums der er på lager
+                .filter(Album::isAvailable) // kun albums der er på lager
                 .collect(Collectors.toList());
     }
 //----------------------------------------------------------------Husk at slette hvis ikke bruges

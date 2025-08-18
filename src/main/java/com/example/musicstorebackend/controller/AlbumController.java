@@ -18,21 +18,21 @@ public class AlbumController {
     private AlbumService albumService;
 
     // A. Opret album + tildel butik
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Album> createAlbum(@RequestBody Album album, @RequestParam Long storeId) {
         Album createdAlbum = albumService.createAlbum(album, storeId);
         return new ResponseEntity<>(createdAlbum, HttpStatus.CREATED);
     }
 
     // B. Hent alle albums
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Album>> getAllAlbums() {
         List<Album> albums = albumService.getAllAlbums();
         return new ResponseEntity<>(albums, HttpStatus.OK);
     }
 
     // C. Opdater album + evt. butik
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Album> updateAlbum(@PathVariable Long id,
                                              @RequestBody Album updatedAlbum,
                                              @RequestParam(required = false) Long storeId) {
@@ -41,7 +41,7 @@ public class AlbumController {
     }
 
     // D. Slet album
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteAlbum(@PathVariable Long id) {
         albumService.deleteAlbum(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT); // 204 uden body
