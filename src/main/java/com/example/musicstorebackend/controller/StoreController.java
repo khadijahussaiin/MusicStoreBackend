@@ -18,10 +18,11 @@ public class StoreController {
     private StoreService storeService;
 
     // A: Tildel/knyt et album til en butik
+    /* Bruges ikke slettes
     @PutMapping("/{storeId}/assign/{albumId}")
     public ResponseEntity<Store> assignAlbumToStore(@PathVariable Long storeId, @PathVariable Long albumId) {
         return ResponseEntity.ok(storeService.assignAlbumToStore(storeId, albumId));
-    }
+    }*/
 
     // B: Se butiks detaljer inkl. albums
     @GetMapping("details/{storeId}")

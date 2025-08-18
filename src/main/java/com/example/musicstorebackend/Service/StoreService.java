@@ -25,6 +25,7 @@ public class StoreService {
     private CustomerRepository customerRepository;
 
     // A: Tildel/knyt et album til en butik
+    /* Bruges ikke evt. slettes.
     public Store assignAlbumToStore(Long storeId, Long albumId) {
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(() -> new RuntimeException("Store not found with id " + storeId));
@@ -34,7 +35,7 @@ public class StoreService {
         album.setStore(store);  // album får reference til store
         albumRepository.save(album);
         return storeRepository.findById(storeId).orElseThrow(); // returnér butikken inkl. opdaterede albums
-    }
+    }*/
 
     // B: Se butiks detaljer inkl. albums
     public Store getStoreDetails(Long storeId) {

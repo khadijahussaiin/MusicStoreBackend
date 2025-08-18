@@ -3,6 +3,7 @@ package com.example.musicstorebackend.controller;
 import com.example.musicstorebackend.model.Album;
 import com.example.musicstorebackend.model.Customer;
 import com.example.musicstorebackend.Service.CustomerService;
+import com.example.musicstorebackend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,21 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    // Hent alle kunder
+    @GetMapping("/all")
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        List<Customer> customers = customerRepository.findAll();
+        return ResponseEntity.ok(customers);
+    }
+    /*@GetMapping("/all")
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        List<Customer> customers = customerRepository.findAll();
+        return ResponseEntity.ok(customers);
+    }*/
 
     // A: Kunde reserverer et album
     @PostMapping("/{customerId}/reserve/{albumId}")
