@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/albums")
-@CrossOrigin(origins = "http://localhost:5500") // WebStorm frontend
+@CrossOrigin("*")
 public class AlbumController {
 
     @Autowired
