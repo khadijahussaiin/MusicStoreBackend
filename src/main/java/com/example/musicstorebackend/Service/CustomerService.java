@@ -48,14 +48,4 @@ public class CustomerService {
 
         return customer.getReservations();
     }
-//-------------------------------------------------------------Husk at slette hvis ikke bruges
-    // Bonus: Opret ny kunde (hvis du vil teste nemt)
-    public Customer createCustomer(Customer customer) {
-        return customerRepository.save(customer);
-    }
-
-    // Bonus: Se alle kunder
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
-    }
 }

@@ -1,4 +1,5 @@
 package com.example.musicstorebackend.model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class Customer {
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "album_id")
     )
+    @JsonIgnoreProperties("customers")
     private List<Album> reservations = new ArrayList<>();
 
     // --- Constructors ---

@@ -48,11 +48,14 @@ public class InitData implements CommandLineRunner {
         Album album5 = new Album("Kind of Blue", "Jazz", "Miles Davis", false);
         album5.setStore(store2); // Album5 ligger i Music World
 
+        Album album6 = new Album("khadija world", "Punjabi", "chuci", false);
+
         albumRepository.save(album1);
         albumRepository.save(album2);
         albumRepository.save(album3);
         albumRepository.save(album4);
         albumRepository.save(album5);
+        albumRepository.save(album6);
 
         // --- Customers (3 kunder, hver reserverer flere albums) ---
         Customer cust1 = new Customer("Alice Johnson", "alice@example.com", "12345678");

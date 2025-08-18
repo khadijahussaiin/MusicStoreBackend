@@ -30,20 +30,8 @@ public class CustomerController {
     }
 
     // C: Se alle kundens reservationer
-    @GetMapping("/{customerId}/reservations")
+    @GetMapping("/reservations/{customerId}")
     public ResponseEntity<List<Album>> getCustomerReservations(@PathVariable Long customerId) {
         return ResponseEntity.ok(customerService.getCustomerReservations(customerId));
-    }
-//-----------------------------------------Husk at slette hvis ikke bruges
-    // Bonus: Opret ny kunde
-    @PostMapping("/add")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        return ResponseEntity.ok(customerService.createCustomer(customer));
-    }
-
-    // Bonus: Se alle kunder
-    @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        return ResponseEntity.ok(customerService.getAllCustomers());
     }
 }

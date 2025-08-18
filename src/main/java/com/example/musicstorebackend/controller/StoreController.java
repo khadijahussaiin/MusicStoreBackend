@@ -24,26 +24,14 @@ public class StoreController {
     }
 
     // B: Se butiks detaljer inkl. albums
-    @GetMapping("/{storeId}")
+    @GetMapping("details/{storeId}")
     public ResponseEntity<Store> getStoreDetails(@PathVariable Long storeId) {
         return ResponseEntity.ok(storeService.getStoreDetails(storeId));
     }
 
-    // C: Liste over kundens reserverede albums, der er tilgængelige
+    // C: Liste over kundens reserverede albums, der er tilgængelige i butikken
     @GetMapping("/customer/{customerId}/available")
     public ResponseEntity<List<Album>> getAvailableReservations(@PathVariable Long customerId) {
         return ResponseEntity.ok(storeService.getAvailableReservations(customerId));
-    }
-//----------------------------Husk at slette hvis ikke bruges
-    // Bonus: Opret ny butik
-    @PostMapping("/add")
-    public ResponseEntity<Store> createStore(@RequestBody Store store) {
-        return ResponseEntity.ok(storeService.createStore(store));
-    }
-
-    // Bonus: Se alle butikker
-    @GetMapping
-    public ResponseEntity<List<Store>> getAllStores() {
-        return ResponseEntity.ok(storeService.getAllStores());
     }
 }

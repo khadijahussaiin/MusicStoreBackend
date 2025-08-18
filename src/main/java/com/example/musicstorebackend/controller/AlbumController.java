@@ -19,8 +19,8 @@ public class AlbumController {
 
     // A. Opret album + tildel butik
     @PostMapping("/add")
-    public ResponseEntity<Album> createAlbum(@RequestBody Album album, @RequestParam Long storeId) {
-        Album createdAlbum = albumService.createAlbum(album, storeId);
+    public ResponseEntity<Album> createAlbum(@RequestBody Album album) {
+        Album createdAlbum = albumService.createAlbum(album, album.getStore().getId());
         return new ResponseEntity<>(createdAlbum, HttpStatus.CREATED);
     }
 
@@ -30,13 +30,13 @@ public class AlbumController {
         List<Album> albums = albumService.getAllAlbums();
         return new ResponseEntity<>(albums, HttpStatus.OK);
     }
-
-    // C. Opdater album + evt. butik
+    // C. Opdater album inkl. butik
     @PutMapping("/update/{id}")
-    public ResponseEntity<Album> updateAlbum(@PathVariable Long id,
-                                             @RequestBody Album updatedAlbum,
-                                             @RequestParam(required = false) Long storeId) {
-        Album album = albumService.updateAlbum(id, updatedAlbum, storeId);
+    public ResponseEntity<Album> updateAlbum(
+            @PathVariable Long id,
+            @RequestBody Album updatedAlbum) {
+
+        Album album = albumService.updateAlbum(id, updatedAlbum);
         return new ResponseEntity<>(album, HttpStatus.OK);
     }
 

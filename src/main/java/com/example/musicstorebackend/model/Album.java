@@ -19,10 +19,11 @@ public class Album {
 
     @ManyToOne
     @JoinColumn(name = "store_id")
-    @JsonIgnoreProperties("albums")  // Undgå cirkulær reference
+    @JsonIgnoreProperties("albums")  // Dette er korrekt
     private Store store;
 
     @ManyToMany(mappedBy = "reservations")
+    @JsonIgnoreProperties("reservations")  // Tilføj denne linje
     private List<Customer> customers = new ArrayList<>();
 
     // 🔹 Constructors

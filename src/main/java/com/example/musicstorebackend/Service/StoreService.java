@@ -52,14 +52,4 @@ public class StoreService {
                 .filter(Album::isAvailable) // kun albums der er på lager
                 .collect(Collectors.toList());
     }
-//----------------------------------------------------------------Husk at slette hvis ikke bruges
-    // Bonus: Opret butik
-    public Store createStore(Store store) {
-        return storeRepository.save(store);
-    }
-
-    // Bonus: Se alle butikker
-    public List<Store> getAllStores() {
-        return storeRepository.findAll();
-    }
 }

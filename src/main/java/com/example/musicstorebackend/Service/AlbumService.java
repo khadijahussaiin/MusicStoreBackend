@@ -35,9 +35,8 @@ public class AlbumService {
     public List<Album> getAllAlbums() {
         return albumRepository.findAll();
     }
-
-    // Opdater album + evt. butik
-    public Album updateAlbum(Long id, Album updatedAlbum, Long storeId) {
+    // Opdater album inkl. butik/store
+    public Album updateAlbum(Long id, Album updatedAlbum) {
         Album album = albumRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Album not found"));
 
@@ -46,15 +45,14 @@ public class AlbumService {
         album.setArtist(updatedAlbum.getArtist());
         album.setAvailable(updatedAlbum.isAvailable());
 
-        if (storeId != null) {
-            Store store = storeRepository.findById(storeId)
+        if (updatedAlbum.getStore() != null && updatedAlbum.getStore().getId() != null) {
+            Store store = storeRepository.findById(updatedAlbum.getStore().getId())
                     .orElseThrow(() -> new RuntimeException("Store not found"));
             album.setStore(store);
         }
 
         return albumRepository.save(album);
     }
-
     // Slet album (fjern også fra kunders reservationer + store)
     public void deleteAlbum(Long id) {
         Album album = albumRepository.findById(id)

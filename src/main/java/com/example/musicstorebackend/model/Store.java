@@ -1,5 +1,6 @@
 package com.example.musicstorebackend.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Store {
 
     //Én butik kan have mange albums. Album har en @ManyToOne til Store (bidirectional relation).
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("store")  // Ignorer 'store' property når albums serialiseres
     private List<Album> albums = new ArrayList<>();
 
     // --- Constructors ---
