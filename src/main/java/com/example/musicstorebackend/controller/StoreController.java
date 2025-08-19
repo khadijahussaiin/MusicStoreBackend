@@ -17,20 +17,13 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
 
-    // A: Tildel/knyt et album til en butik
-    /* Bruges ikke slettes
-    @PutMapping("/{storeId}/assign/{albumId}")
-    public ResponseEntity<Store> assignAlbumToStore(@PathVariable Long storeId, @PathVariable Long albumId) {
-        return ResponseEntity.ok(storeService.assignAlbumToStore(storeId, albumId));
-    }*/
-
-    // B: Se butiks detaljer inkl. albums
+    // 1: Se butiks detaljer inkl. albums
     @GetMapping("details/{storeId}")
     public ResponseEntity<Store> getStoreDetails(@PathVariable Long storeId) {
         return ResponseEntity.ok(storeService.getStoreDetails(storeId));
     }
 
-    // C: Liste over kundens reserverede albums, der er tilgængelige i butikken
+    // 2: Liste over kundens reserverede albums, der er tilgængelige i butikken
     @GetMapping("/customer/{customerId}/available")
     public ResponseEntity<List<Album>> getAvailableReservations(@PathVariable Long customerId) {
         return ResponseEntity.ok(storeService.getAvailableReservations(customerId));

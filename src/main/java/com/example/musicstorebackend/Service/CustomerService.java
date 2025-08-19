@@ -18,7 +18,7 @@ public class CustomerService {
     @Autowired
     private AlbumRepository albumRepository;
 
-    // A: Kunde reserverer et album
+    // 1: Kunde reserverer et album
     public Customer reserveAlbum(Long customerId, Long albumId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found with id " + customerId));
@@ -30,7 +30,7 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    // B: Kunde afmelder album
+    // 2: Kunde afmelder album
     public Customer cancelReservation(Long customerId, Long albumId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found with id " + customerId));
@@ -41,7 +41,7 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    // C: Kunde ser alle sine reservationer
+    // 3: Kunde ser alle sine reservationer
     public List<Album> getCustomerReservations(Long customerId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found with id " + customerId));

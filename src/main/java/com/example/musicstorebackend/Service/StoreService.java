@@ -24,26 +24,13 @@ public class StoreService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    // A: Tildel/knyt et album til en butik
-    /* Bruges ikke evt. slettes.
-    public Store assignAlbumToStore(Long storeId, Long albumId) {
-        Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new RuntimeException("Store not found with id " + storeId));
-        Album album = albumRepository.findById(albumId)
-                .orElseThrow(() -> new RuntimeException("Album not found with id " + albumId));
-
-        album.setStore(store);  // album får reference til store
-        albumRepository.save(album);
-        return storeRepository.findById(storeId).orElseThrow(); // returnér butikken inkl. opdaterede albums
-    }*/
-
-    // B: Se butiks detaljer inkl. albums
+    // 1: Se butiks detaljer inkl. albums
     public Store getStoreDetails(Long storeId) {
         return storeRepository.findById(storeId)
                 .orElseThrow(() -> new RuntimeException("Store not found with id " + storeId));
     }
 
-    // C: Liste over kundens reserverede albums, der er tilgængelige
+    // 2: Liste over kundens reserverede albums, der er tilgængelige
     public List<Album> getAvailableReservations(Long customerId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found with id " + customerId));

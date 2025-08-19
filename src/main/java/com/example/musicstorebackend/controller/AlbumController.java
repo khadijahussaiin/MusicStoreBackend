@@ -17,20 +17,20 @@ public class AlbumController {
     @Autowired
     private AlbumService albumService;
 
-    // A. Opret album + tildel butik
+    // 1. Opret album og tildel butik
     @PostMapping("/add")
     public ResponseEntity<Album> createAlbum(@RequestBody Album album) {
         Album createdAlbum = albumService.createAlbum(album, album.getStore().getId());
         return new ResponseEntity<>(createdAlbum, HttpStatus.CREATED);
     }
 
-    // B. Hent alle albums
+    // 2. Hent alle albums
     @GetMapping("/all")
     public ResponseEntity<List<Album>> getAllAlbums() {
         List<Album> albums = albumService.getAllAlbums();
         return new ResponseEntity<>(albums, HttpStatus.OK);
     }
-    // C. Opdater album inkl. butik
+    // 3. Opdater album inkl. butik
     @PutMapping("/update/{id}")
     public ResponseEntity<Album> updateAlbum(
             @PathVariable Long id,
@@ -40,7 +40,7 @@ public class AlbumController {
         return new ResponseEntity<>(album, HttpStatus.OK);
     }
 
-    // D. Slet album
+    // 4. Slet album
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteAlbum(@PathVariable Long id) {
         albumService.deleteAlbum(id);

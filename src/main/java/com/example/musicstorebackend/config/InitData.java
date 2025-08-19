@@ -48,7 +48,7 @@ public class InitData implements CommandLineRunner {
         Album album5 = new Album("Kind of Blue", "Jazz", "Miles Davis", false);
         album5.setStore(store2); // Album5 ligger i Music World
 
-        Album album6 = new Album("khadija world", "Punjabi", "chuci", false);
+        Album album6 = new Album("Baby", "Pop", "Justin Bieber", false);
 
         albumRepository.save(album1);
         albumRepository.save(album2);
@@ -71,8 +71,11 @@ public class InitData implements CommandLineRunner {
         cust3.getReservations().add(album4); // Charlie reserverer Abbey Road
         cust3.getReservations().add(album5); // Charlie reserverer også Kind of Blue
 
+        Customer cust4 = new Customer("Khadija Hussain", "Khadija@example.com", "41912834");
+
         customerRepository.save(cust1);
         customerRepository.save(cust2);
         customerRepository.save(cust3);
+        customerRepository.save(cust4);
     }
 }

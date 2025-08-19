@@ -27,25 +27,20 @@ public class CustomerController {
         List<Customer> customers = customerRepository.findAll();
         return ResponseEntity.ok(customers);
     }
-    /*@GetMapping("/all")
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        List<Customer> customers = customerRepository.findAll();
-        return ResponseEntity.ok(customers);
-    }*/
 
-    // A: Kunde reserverer et album
+    // 1: Kunde reserverer et album
     @PostMapping("/{customerId}/reserve/{albumId}")
     public ResponseEntity<Customer> reserveAlbum(@PathVariable Long customerId, @PathVariable Long albumId) {
         return ResponseEntity.ok(customerService.reserveAlbum(customerId, albumId));
     }
 
-    // B: Kunde afmelder et album
+    // 2: Kunde afmelder et album
     @DeleteMapping("/{customerId}/cancel/{albumId}")
     public ResponseEntity<Customer> cancelReservation(@PathVariable Long customerId, @PathVariable Long albumId) {
         return ResponseEntity.ok(customerService.cancelReservation(customerId, albumId));
     }
 
-    // C: Se alle kundens reservationer
+    // 3: Se alle kundens reservationer
     @GetMapping("/reservations/{customerId}")
     public ResponseEntity<List<Album>> getCustomerReservations(@PathVariable Long customerId) {
         return ResponseEntity.ok(customerService.getCustomerReservations(customerId));
